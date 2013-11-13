@@ -6,18 +6,20 @@ class MeetingsController < ApplicationController
 
   def show
     @meeting = Meeting.find_by(id: params[:id])
+    @course = Course.find_by(id: @meeting.course_id)
+    # @student = Student.find_by(id: @course)
+    # @attendance = Attendance.where(:meeting_id => params[:id])
+    # @student = Student.where(:)
   end
 
   def new
+    @course = Course.all
   end
 
   def create
     @meeting = Meeting.new
     @meeting.held_on = params[:held_on]
     @meeting.course_id = params[:course_id]
-
-    @courses = Courses.all
-    @courses.title = params[:title]
 
     if @meeting.save
       redirect_to meetings_url, notice: "Meeting created successfully."

@@ -10,4 +10,8 @@
   <dt>Title</dt>
   <dd><%= @course.title %></dd>
 
+  <dt>Meetings</dt>
+  <% @meeting.each do |show| %>
+  <dd><%= show.held_on %></dd>
+  <% end %>
 </dl>

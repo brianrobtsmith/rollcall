@@ -6,6 +6,8 @@ class CoursesController < ApplicationController
 
   def show
     @course = Course.find_by(id: params[:id])
+    @meeting = Meeting.where(:course_id => @course.id)
+
   end
 
   def new
